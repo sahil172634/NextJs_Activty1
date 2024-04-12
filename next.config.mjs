@@ -9,6 +9,12 @@ const nextConfig = {
         port: '',
         pathname: '/viewstatic/lancer/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'resi.uatz.view.com.au',
+        port: '',
+        pathname: '/viewstatic/lancer/**',
+      },
     ],
   },
 };

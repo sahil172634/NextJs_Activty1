@@ -1,37 +1,80 @@
-import { I_SOCIAL_ICONS } from './footer.interface';
+import { IFooterLinks, I_SOCIAL_ICONS } from '@/shared/components/footer/footer.interface';
 
-export const FOOTER_WEBVIEW_LINKS: string[][] = [
-  ['Real Estate News', 'Estimate', 'Join view.com.au', 'Real Estate Apps', 'Make an Offer', 'Location Profiles'],
+export const FOOTER_WEBVIEW_LINKS: IFooterLinks[][] = [
   [
-    'Agency Sign Up',
-    'Find A Real Estate Agent',
-    'Auction and Sales Results Victoria',
-    'Auction and Sales Results by Suburb',
-    'Real Estate Advice',
+    { title: 'Real Estate News', href: '/' },
+    { title: 'Estimate', href: '/' },
+    { title: 'Join view.com.au', href: '/' },
+    { title: 'Real Estate Apps', href: '/' },
+    { title: 'Make an Offer', href: '/' },
+    { title: 'Location Profiles', href: '/' },
   ],
-  ['Real Estate For Sale', 'Rental Properties', 'Recently Sold Properties', 'New Developments', 'View Insurance'],
-  ['Terms & Conditions', 'Privacy Policy', 'Sitemap'],
+  [
+    { title: 'Agency Sign Up', href: '/' },
+    { title: 'Find A Real Estate Agent', href: '/' },
+    { title: 'Auction and Sales Results Victoria', href: '/' },
+    { title: 'Auction and Sales Results by Suburb', href: '/' },
+    { title: 'Real Estate Advice', href: '/' },
+  ],
+  [
+    { title: 'Real Estate For Sale', href: '/' },
+    { title: 'Rental Properties', href: '/' },
+    { title: 'Recently Sold Properties', href: '/' },
+    { title: 'New Developments', href: '/' },
+    { title: 'View Insurance', href: '/' },
+  ],
+  [
+    { title: 'Terms & Conditions', href: '/' },
+    { title: 'Privacy Policy', href: '/' },
+    { title: 'Sitemap', href: '/' },
+  ],
 ];
-export const FOOTER_MOBILEVIEW_LINKS: string[] = [
-  'Location Profiles',
-  'Estimate',
-  'Real Estate News',
-  'Real Estate Advice',
-  'Auction Results',
-  'Agent Login',
-  'About Us',
-  'Contact',
-  'FAQs',
-  'Terms & Conditions',
-  'Privacy Policy',
-  'Sitemap',
+export const FOOTER_MOBILEVIEW_LINKS: IFooterLinks[] = [
+  { title: 'Location Profiles', href: '/' },
+  { title: 'Estimate', href: '/' },
+  { title: 'Real Estate News', href: '/' },
+  { title: 'Real Estate Advice', href: '/' },
+  { title: 'Auction Results', href: '/' },
+  { title: 'Agent Login', href: '/' },
+  { title: 'About Us', href: '/' },
+  { title: 'Contact', href: '/' },
+  { title: 'FAQs', href: '/' },
+  { title: 'Terms & Conditions', href: '/' },
+  { title: 'Privacy Policy', href: '/' },
+  { title: 'Sitemap', href: '/' },
 ];
 export const SOCIAL_ICONS: I_SOCIAL_ICONS[] = [
-  { src: 'https://view.com.au/viewstatic/lancer/_next/static/media/social-facebook.95c9cce2.svg', alt: 'facebook' },
-  { src: 'https://view.com.au/viewstatic/lancer/_next/static/media/social-twitter.dcd26979.svg', alt: 'twitter' },
-  { src: 'https://view.com.au/viewstatic/lancer/_next/static/media/social-instagram.b03aa141.svg', alt: 'instagram' },
-  { src: 'https://view.com.au/viewstatic/lancer/_next/static/media/social-linkedIn.5bb2057f.svg', alt: 'linkedIn' },
-  { src: 'https://view.com.au/viewstatic/lancer/_next/static/media/social-pinterest.de53db23.svg', alt: 'pinterest' },
+  {
+    src: 'https://view.com.au/viewstatic/lancer/_next/static/media/social-facebook.95c9cce2.svg',
+    alt: 'facebook',
+    href: '/',
+  },
+  {
+    src: 'https://view.com.au/viewstatic/lancer/_next/static/media/social-twitter.dcd26979.svg',
+    alt: 'twitter',
+    href: '/',
+  },
+  {
+    src: 'https://view.com.au/viewstatic/lancer/_next/static/media/social-instagram.b03aa141.svg',
+    alt: 'instagram',
+    href: '/',
+  },
+  {
+    src: 'https://view.com.au/viewstatic/lancer/_next/static/media/social-linkedIn.5bb2057f.svg',
+    alt: 'linkedIn',
+    href: '/',
+  },
+  {
+    src: 'https://view.com.au/viewstatic/lancer/_next/static/media/social-pinterest.de53db23.svg',
+    alt: 'pinterest',
+    href: '/',
+  },
 ];
 
-export const FOOTER_TOP_LINKS: string[] = ['Editorial Guidelines', 'Agent Login', 'About Us', 'Contact', 'FAQs'];
+export const FOOTER_TOP_LINKS: IFooterLinks[] = [
+  { title: 'Editorial Guidelines', href: '/' },
+  { title: 'Agent Login', href: '/' },
+  { title: 'About Us', href: '/' },
+  { title: 'Contact', href: '/' },
+  { title: 'FAQs', href: '/' },
+];

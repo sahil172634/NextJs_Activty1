@@ -1,42 +1,72 @@
 import React from 'react';
-import { FOOTER_TOP_LINKS, FOOTER_MOBILEVIEW_LINKS, FOOTER_WEBVIEW_LINKS, SOCIAL_ICONS } from './footer.constant';
+import {
+  FOOTER_TOP_LINKS,
+  FOOTER_MOBILEVIEW_LINKS,
+  FOOTER_WEBVIEW_LINKS,
+  SOCIAL_ICONS,
+} from '@/shared/components/footer/footer.constant';
 import Image from 'next/image';
-import Link from 'next/link';
-import HelperLink from './HelperLink';
-const Footer = (): JSX.Element => {
-  return (
-    <footer className='max-w-1200 mx-auto'>
-      <div className='flex justify-between h-72px items-center border-b border-gray-200'>
-        <div className='flex gap-6 max-w-248 lg:max-w-216 max-lg:mx-auto'>
-          {SOCIAL_ICONS.map((link) => (
-            <Link href='/' key={link.src}>
-              <Image src={link.src} alt={link.alt} width={24} height={24} />
-            </Link>
-          ))}
-        </div>
 
-        <ul className='lg:flex gap-6 hidden text-at-dark-700'>
-          {FOOTER_TOP_LINKS.map((link) => (
-            <li key={link} className=' hover:underline'>
-              <Link href='/'>{link}</Link>
-            </li>
-          ))}
-        </ul>
+import { IFooterLinks } from './footer.interface';
+const Footer = (): JSX.Element => {
+  const renderSocialIcons = () => {
+    return (
+      <div className='flex gap-6 max-w-248 lg:max-w-216 max-lg:mx-auto'>
+        {SOCIAL_ICONS.map((link) => (
+          <a href={link.href} key={link.src}>
+            <Image src={link.src} alt={link.alt} width={24} height={24} />
+          </a>
+        ))}
       </div>
-      <div className='py-2 justify-between h-272 border-b border-gray-200 hidden lg:flex text-at-dark-700'>
-        <HelperLink links={FOOTER_WEBVIEW_LINKS[0]} />
-        <HelperLink links={FOOTER_WEBVIEW_LINKS[1]} />
-        <HelperLink links={FOOTER_WEBVIEW_LINKS[2]} />
-        <HelperLink links={FOOTER_WEBVIEW_LINKS[3]} />
-      </div>
-      <ul className='grid w-full grid-cols-2 grid-rows-2 gap-2 text-center text-at-dark-700 py-6 border-b lg:hidden hover:underline'>
-        {FOOTER_MOBILEVIEW_LINKS.map((link) => (
-          <li key={link} className='mt-2'>
-            <Link href='/'>{link}</Link>
+    );
+  };
+
+  const renderFooterTopLinks = () => {
+    return (
+      <ul className='lg:flex gap-6 hidden text-at-dark-700'>
+        {FOOTER_TOP_LINKS.map((link) => (
+          <li key={link.title} className=' hover:underline'>
+            {link.href && <a href={link.href}>{link.title}</a>}
           </li>
         ))}
       </ul>
-
+    );
+  };
+  const renderFooterMainlinks = (links: IFooterLinks[]) => {
+    return (
+      <ul>
+        {links.map((link) => (
+          <li key={link.title} className='mt-4 hover:underline'>
+            {link.href && <a href={link.href}>{link.title}</a>}
+          </li>
+        ))}
+      </ul>
+    );
+  };
+  const renderMobileViewLinks = () => {
+    return (
+      <ul className='grid w-full grid-cols-2 grid-rows-2 gap-2 text-center text-at-dark-700 py-6 border-b lg:hidden hover:underline'>
+        {FOOTER_MOBILEVIEW_LINKS.map((link) => (
+          <li key={link.title} className='mt-2'>
+            {link.href && <a href={link.href}>{link.title}</a>}
+          </li>
+        ))}
+      </ul>
+    );
+  };
+  return (
+    <footer className='max-w-1200 mx-auto'>
+      <div className='flex justify-between h-72px items-center border-b border-gray-200'>
+        {renderSocialIcons()}
+        {renderFooterTopLinks()}
+      </div>
+      <div className='py-2 lg:grid grid-cols-4 h-272 border-b border-gray-200 hidden  text-at-dark-700'>
+        {renderFooterMainlinks(FOOTER_WEBVIEW_LINKS[0])}
+        {renderFooterMainlinks(FOOTER_WEBVIEW_LINKS[1])}
+        {renderFooterMainlinks(FOOTER_WEBVIEW_LINKS[2])}
+        {renderFooterMainlinks(FOOTER_WEBVIEW_LINKS[3])}
+      </div>
+      {renderMobileViewLinks()}
       <div className='max-lg:flex max-lg:flex-col max-lg:items-center'>
         <div className='max-lg:flex max-lg:flex-col max-lg:items-center flex justify-between mt-8'>
           <Image

@@ -1,10 +1,6 @@
-import { BlobOptions } from 'buffer';
-
-export interface I_MobileLinks {
+export interface ISlideBarLinks {
   title: string;
+  href: string;
   src?: string;
   alt?: string;
-}
-export interface I_slideBarProps {
-  isHamburgerShow: boolean;
 }

@@ -1,3 +1,4 @@
-export interface I_headerProp {
-  onMenuButton: () => void;
+export interface IHeaderLinks {
+  title: string;
+  href: string;
 }
