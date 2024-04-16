@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
-import { DESCRIPTIONS } from '@/module/conveyancing/Description/discription.constant';
+import { DESCRIPTIONS } from '@/module/conveyancing/description/discription.constant';
 import { OPTIONS } from '@/shared/components/selectInpufield/selectOptions.constants';
 import { FAQs } from '@/shared/components/accordian/accrodian.constant';
 import { FEEDBACKS } from '@/module/conveyancing/feedback/feddback.constant';
