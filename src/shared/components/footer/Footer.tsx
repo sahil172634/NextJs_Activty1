@@ -54,18 +54,23 @@ const Footer = (): JSX.Element => {
       </ul>
     );
   };
-  return (
-    <footer className='max-w-1200 mx-auto'>
-      <div className='flex justify-between h-72px items-center border-b border-gray-200'>
-        {renderSocialIcons()}
-        {renderFooterTopLinks()}
-      </div>
+  const renderWebViewMainLinks=()=>{
+    return (
       <div className='py-2 lg:grid grid-cols-4 h-272 border-b border-gray-200 hidden  text-at-dark-700'>
         {renderFooterMainlinks(FOOTER_WEBVIEW_LINKS[0])}
         {renderFooterMainlinks(FOOTER_WEBVIEW_LINKS[1])}
         {renderFooterMainlinks(FOOTER_WEBVIEW_LINKS[2])}
         {renderFooterMainlinks(FOOTER_WEBVIEW_LINKS[3])}
       </div>
+    );
+  }
+  return (
+    <footer className='max-w-1200 mx-auto'>
+      <div className='flex justify-between h-72px items-center border-b border-gray-200'>
+        {renderSocialIcons()}
+        {renderFooterTopLinks()}
+      </div>
+      {renderWebViewMainLinks()}
       {renderMobileViewLinks()}
       <div className='max-lg:flex max-lg:flex-col max-lg:items-center'>
         <div className='max-lg:flex max-lg:flex-col max-lg:items-center flex justify-between mt-8'>

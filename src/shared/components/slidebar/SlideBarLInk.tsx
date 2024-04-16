@@ -4,7 +4,7 @@ import { ISlideBarLinks } from '@/shared/components/slidebar/slidebar.interface'
 interface IProps {
   link: ISlideBarLinks;
 }
-const SlideBarLInk = ({ link }: IProps) => {
+const SlideBarLInk = ({ link }: IProps): JSX.Element => {
   return (
     <li key={link.title} className={`${link.src ? 'px-5 py-3' : 'px-3 py-3'} flex gap-4  hover:underline`}>
       {link.src && <Image src={link.src!} alt={link.alt!} width={20} height={20} />}
