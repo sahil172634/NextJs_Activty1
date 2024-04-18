@@ -1,7 +1,7 @@
 import React, { ReactNode, useState } from 'react';
-import Header from '@/shared/components/header/header';
-import Footer from '@/shared/components/footer/Footer';
-import SlideBar from '@/shared/components/slidebar/SlideBar';
+import Header from '@/src/shared/components/header/header';
+import Footer from '@/src/shared/components/footer/Footer';
+import SlideBar from '@/src/shared/components/slidebar/SlideBar';
 interface IProps {
   children?: ReactNode;
 }

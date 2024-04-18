@@ -1,4 +1,4 @@
-import { ISlideBarLinks } from '@/shared/components/slidebar/slidebar.interface';
+import { ISlideBarLinks } from '@/src/shared/components/slidebar/slidebar.interface';
 import rocketLogo from '@/media/rocket-launch-line-icon.svg';
 // 'https://view.com.au/viewstatic/lancer/_next/static/media/nav-rocket.15d190c5.svg'
 export const SLIDEBAR_LINKS: ISlideBarLinks[] = [

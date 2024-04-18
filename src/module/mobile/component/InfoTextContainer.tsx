@@ -1,5 +1,5 @@
 import React from 'react';
-import MediaButtons from '@/module/mobile/component/MediaButtons';
+import MediaButtons from '@/src/module/mobile/component/MediaButtons';
 interface IProops {
   cssClass: string;
   title: string;

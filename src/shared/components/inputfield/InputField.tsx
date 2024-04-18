@@ -6,20 +6,27 @@ interface IProops extends React.ComponentProps<'input'> {
   name: string;
   register: UseFormRegister<FieldValues>;
   rule: RegisterOptions;
+  error: string | undefined;
 }
-const InputField = ({ rule, cssclass, name, label, register, ...proops }: IProops): JSX.Element => {
-  return (
-    <div className={cssclass}>
-      <label className='ml-1 text-sm'>
-        {label}
-        <span className='text-red-500'>*</span>
-      </label>
+const InputField = ({ error, rule, cssclass, name, label, register, ...proops }: IProops): JSX.Element => {
+  const renderInput = () => {
+    return (
       <input
         {...register(name, rule)}
         name={name}
         {...proops}
         className='w-full border rounded-lg mt-2 p-2 border-gray-200 '
       />
+    );
+  };
+  return (
+    <div className={cssclass}>
+      <label className='ml-1 text-sm'>
+        {label}
+        <span className='text-red-500'>*</span>
+      </label>
+      {renderInput()}
+      {error && <p className='text-red-500 text-xs'>{error}</p>}
     </div>
   );
 };

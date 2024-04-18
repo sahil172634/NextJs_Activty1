@@ -1,4 +1,3 @@
-interface photo {}
 export interface ISlideBarLinks {
   title: string;
   href?: string;

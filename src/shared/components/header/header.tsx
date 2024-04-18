@@ -1,4 +1,4 @@
-import { WEBVIEW_LINKS } from '@/shared/components/header/header.constant';
+import { WEBVIEW_LINKS } from '@/src/shared/components/header/header.constant';
 import Image from 'next/image';
 import Hamburger from 'hamburger-react';
 export interface IProp {

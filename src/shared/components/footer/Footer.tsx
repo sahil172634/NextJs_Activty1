@@ -4,7 +4,7 @@ import {
   FOOTER_MOBILEVIEW_LINKS,
   FOOTER_WEBVIEW_LINKS,
   SOCIAL_ICONS,
-} from '@/shared/components/footer/footer.constant';
+} from '@/src/shared/components/footer/footer.constant';
 import Image from 'next/image';
 
 import { IFooterLinks } from './footer.interface';
@@ -54,7 +54,7 @@ const Footer = (): JSX.Element => {
       </ul>
     );
   };
-  const renderWebViewMainLinks=()=>{
+  const renderWebViewMainLinks = () => {
     return (
       <div className='py-2 lg:grid grid-cols-4 h-272 border-b border-gray-200 hidden  text-at-dark-700'>
         {renderFooterMainlinks(FOOTER_WEBVIEW_LINKS[0])}
@@ -63,7 +63,7 @@ const Footer = (): JSX.Element => {
         {renderFooterMainlinks(FOOTER_WEBVIEW_LINKS[3])}
       </div>
     );
-  }
+  };
   return (
     <footer className='max-w-1200 mx-auto'>
       <div className='flex justify-between h-72px items-center border-b border-gray-200'>

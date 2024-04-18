@@ -1,9 +1,9 @@
 import React from 'react';
 import Image from 'next/image';
-import Layout from '@/shared/components/layout/Layout';
-import MediaButtons from '@/module/mobile/component/MediaButtons';
-import HeroContainer from '@/shared/components/HeroContainer/HeroContainer';
-import InfoTextContainer from '@/module/mobile/component/InfoTextContainer';
+import Layout from '@/src/shared/components/layout/Layout';
+import MediaButtons from '@/src/module/mobile/component/MediaButtons';
+import HeroContainer from '@/src/shared/components/HeroContainer/HeroContainer';
+import InfoTextContainer from '@/src/module/mobile/component/InfoTextContainer';
 
 const index = (): JSX.Element => {
   let heroTitle = 'Explore properties wherever and whenever you like.';

@@ -6,8 +6,9 @@ interface IProops extends React.ComponentProps<'select'> {
   options: string[];
   register: UseFormRegister<FieldValues>;
   rule?: RegisterOptions;
+  error: string | undefined;
 }
-const SelectInputField = ({ label, name, options, register, rule, ...props }: IProops): JSX.Element => {
+const SelectInputField = ({ label, name, options, register, error, rule, ...props }: IProops): JSX.Element => {
   const renderSelectWithOptions = () => {
     return (
       <select className='p-2 border rounded-lg border-gray-200 w-full' {...props} {...register!(name, rule)}>
@@ -31,6 +32,7 @@ const SelectInputField = ({ label, name, options, register, rule, ...props }: IP
         <span className='text-red-500'>*</span>
       </label>
       {renderSelectWithOptions()}
+      {error && <p className='text-red-500 text-xs'>{error}</p>}
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { ISlideBarLinks } from '@/shared/components/slidebar/slidebar.interface';
+import { ISlideBarLinks } from '@/src/shared/components/slidebar/slidebar.interface';
 interface IProps {
   link: ISlideBarLinks;
 }

@@ -15,6 +15,12 @@ const nextConfig = {
         port: '',
         pathname: '/viewstatic/lancer/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'd126h31mg8tzcs.cloudfront.net',
+        port: '',
+        pathname: '/arbour-park/**',
+      },
     ],
   },
 };

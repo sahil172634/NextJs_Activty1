@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
-import { SLIDEBAR_LINKS } from '@/shared/components/slidebar/slidebar.constant';
-import SlideBarLInk from '@/shared/components/slidebar/SlideBarLInk';
+import { SLIDEBAR_LINKS } from '@/src/shared/components/slidebar/slidebar.constant';
+import SlideBarLInk from '@/src/shared/components/slidebar/SlideBarLInk';
 interface IProps {
   isShowHamburger: boolean;
 }

@@ -1,4 +1,4 @@
-import { IFooterLinks, I_SOCIAL_ICONS } from '@/shared/components/footer/footer.interface';
+import { IFooterLinks, I_SOCIAL_ICONS } from '@/src/shared/components/footer/footer.interface';
 
 export const FOOTER_WEBVIEW_LINKS: IFooterLinks[][] = [
   [
