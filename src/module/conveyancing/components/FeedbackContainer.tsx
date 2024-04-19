@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { IFeedback } from '../conveyancing.interface';
 import Image from 'next/image';
 import star from '@/public/media/star.svg';
-import ShowMoreBtn from '@/src/shared/components/Button/showMoreButton/ShowMoreBtn';
+import ShowMoreBtn from '@/src/shared/components/Button/ShowMoreBtn';
 interface IProop {
   feedback: IFeedback;
 }

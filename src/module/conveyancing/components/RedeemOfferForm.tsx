@@ -1,9 +1,7 @@
 import InputField from '@/src/shared/components/inputfield/InputField';
 import SelectInputField from '@/src/shared/components/selectInpufield/selectInputField';
-
 import Image from 'next/image';
 import emailIcon from '@/public/media/emailIcon.svg';
-
 import React from 'react';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { OPTIONS } from '../conveyancing.constant';

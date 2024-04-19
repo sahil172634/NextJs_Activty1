@@ -1,7 +1,9 @@
+import Image from 'next/image';
 import { useRef, useState } from 'react';
+import arrow from '@/public/media/blackArrow.svg';
 import { IAccordian } from './accordian.interface';
 
-const Accordian = ({ title, subTitle, subTitleCSS, titleCSS }: IAccordian): JSX.Element => {
+const ArrowAccordian = ({ title, subTitle, subTitleCSS, titleCSS }: IAccordian): JSX.Element => {
   const [isShowSubTitle, setIsShowSubTitle] = useState<boolean>(false);
   const subTitleRef = useRef<HTMLDivElement>(null);
   const onShowHideButton = () => {
@@ -21,11 +23,13 @@ const Accordian = ({ title, subTitle, subTitleCSS, titleCSS }: IAccordian): JSX.
     <div className={titleCSS}>
       <div onClick={onShowHideButton} className=' w-full flex items-center justify-between cursor-pointer'>
         <p className='text-base font-semibold pr-2'>{title}</p>
-        <span className={`font-medium `}>{isShowSubTitle ? '-' : '+'}</span>
+        <span className={`font-medium duration-500  ${isShowSubTitle && 'rotate-180'} text-gray-400`}>
+          <Image src={arrow} width={12} height={8} alt='Arrow Icon' />
+        </span>
       </div>
       {renderSubTitle()}
     </div>
   );
 };
 
-export default Accordian;
+export default ArrowAccordian;

@@ -23,6 +23,15 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/new-developments',
+        destination: '/conveyancing',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

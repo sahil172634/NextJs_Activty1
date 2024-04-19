@@ -52,8 +52,16 @@ const Index = (): JSX.Element => {
       <div>
         <h2 className='text-base font-bold mb-4 xmd:mb-6'>Frequently Asked Questions</h2>
         {FAQs.map((faq, index) => {
-          let css = index !== FAQs.length - 1 ? 'border-b' : '';
-          return <Accordian key={faq.title} QA={faq} cssClass={css} />;
+          let css = index !== FAQs.length - 1 ? 'border-b pt-4' : 'pt-4';
+          return (
+            <Accordian
+              key={faq.title}
+              title={faq.title}
+              subTitle={faq.subTitle}
+              titleCSS={css}
+              subTitleCSS='mt-4 [&_p]:mb-4 [&_ul]:pl-7 [&_ul]:mb-4 [&_ul]:list-disc'
+            />
+          );
         })}
       </div>
     );

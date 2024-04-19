@@ -10,6 +10,9 @@ const config: Config = {
       lg: '1200px',
     },
     extend: {
+      fontFamily: {
+        'golos-text': ['Golos Text', 'sans-serif'],
+      },
       spacing: {
         52: '52px',
         53: '53px',
@@ -22,6 +25,7 @@ const config: Config = {
         248: '248px',
         272: '272px',
         446: '446px',
+        474: '474px',
         500: '500px',
         1200: '1200px',
         '58%': '58%',
