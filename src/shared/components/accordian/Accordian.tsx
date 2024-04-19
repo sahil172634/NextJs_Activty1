@@ -21,7 +21,7 @@ const Accordian = ({ title, subTitle, subTitleCSS, titleCSS }: IAccordian): JSX.
     <div className={titleCSS}>
       <div onClick={onShowHideButton} className=' w-full flex items-center justify-between cursor-pointer'>
         <p className='text-base font-semibold pr-2'>{title}</p>
-        <span className={`font-medium `}>{isShowSubTitle ? '-' : '+'}</span>
+        <span className='font-semibold text-2xl'>{isShowSubTitle ? '-' : '+'}</span>
       </div>
       {renderSubTitle()}
     </div>

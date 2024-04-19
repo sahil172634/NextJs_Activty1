@@ -21,7 +21,7 @@ const DevlopmentDetails = ({ developmentDetail }: IProps) => {
   const displayLocation = `${developmentDetail.displaySuite.address.thoroughfareNumber} ${developmentDetail.address.thoroughfare}, ${developmentDetail.address.area}, ${developmentDetail.address.shortenState} ${developmentDetail.address.postalCode}`;
   const renderHeroContainer = () => {
     return (
-      <HeroContainer title={developmentDetail.title} subTitle={developmentLocation} cssClassName='xmd:w-8/12'>
+      <HeroContainer title={developmentDetail.title} subTitle={developmentLocation} cssClassName='xmd:w-8/12 '>
         <div className='flex flex-col mt-8 xmd:flex-row justify-start xmd:justify-between xmd:items-center'>
           <div className='flex gap-4'>
             <Button cssClass='text-white bg-blue-600 hover:bg-blue-700 rounded-lg flex items-center justify-center'>
@@ -33,7 +33,7 @@ const DevlopmentDetails = ({ developmentDetail }: IProps) => {
               <span className='ml-2'>Call us</span>
             </Button>
           </div>
-          <div className='flex items-center gap-4 mt-4 sm:mt-0'>
+          <div className='flex items-center gap-4 mt-4 sm:mt-2'>
             <a href='#' className='text-xl rounded-full bg-white w-8 h-8 flex justify-center items-center'>
               <Image
                 src='https://resi.uatz.view.com.au/viewstatic/lancer/_next/static/media/Facebook - Original.fdf42c22.svg'
@@ -166,7 +166,7 @@ const DevlopmentDetails = ({ developmentDetail }: IProps) => {
   };
   const renderPropertyImage = () => {
     return (
-      <span className='overflow-hidden rounded-lg h-72 w-474 relative mt-10'>
+      <span className='overflow-hidden rounded-lg  xmd:h-72  xmd:w-474 relative xmd:mt-10'>
         <Image
           src='https://d126h31mg8tzcs.cloudfront.net/arbour-park/gallery/image/images-1200x5501__original.jpg'
           alt='Property Image'
@@ -177,8 +177,8 @@ const DevlopmentDetails = ({ developmentDetail }: IProps) => {
   };
   return (
     <Layout>
-      <main className='max-w-1200 mx-auto'>
-        <section className='flex gap-3'>
+      <main className='max-w-1200 mx-auto px-8'>
+        <section className='flex gap-4 flex-col xmd:flex-row  '>
           {renderHeroContainer()}
           {renderPropertyImage()}
         </section>
