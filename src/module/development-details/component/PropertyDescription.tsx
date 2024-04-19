@@ -9,8 +9,8 @@ const PropertyDescription = ({ description }: IProps) => {
   const onShowMore = () => {
     setIsShowMore(!isShowMore);
   };
-  return (
-    <div>
+  const renderDescription = () => {
+    return (
       <div
         ref={descriptionRef}
         style={isShowMore ? { height: descriptionRef.current?.scrollHeight } : { height: '200px' }}
@@ -19,6 +19,11 @@ const PropertyDescription = ({ description }: IProps) => {
         }`}
         dangerouslySetInnerHTML={{ __html: description }}
       />
+    );
+  };
+  return (
+    <div>
+      {renderDescription()}
       <ShowMoreBtn onShowMore={onShowMore} isShowMore={isShowMore} />
     </div>
   );

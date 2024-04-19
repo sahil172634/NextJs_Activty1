@@ -19,46 +19,56 @@ interface IProps {
 const DevlopmentDetails = ({ developmentDetail }: IProps) => {
   const developmentLocation = `${developmentDetail.address.thoroughfareNumber} ${developmentDetail.address.thoroughfare}, ${developmentDetail.address.area}, ${developmentDetail.address.state} ${developmentDetail.address.postalCode} `;
   const displayLocation = `${developmentDetail.displaySuite.address.thoroughfareNumber} ${developmentDetail.address.thoroughfare}, ${developmentDetail.address.area}, ${developmentDetail.address.shortenState} ${developmentDetail.address.postalCode}`;
+  const renderContactButtons = () => {
+    return (
+      <div className='flex gap-4'>
+        <Button cssClass='text-white bg-blue-600 hover:bg-blue-700 rounded-lg flex items-center justify-center'>
+          <Image src={EmailIcon} alt='Email Icon' width={20} height={20} />
+          <span className='ml-2'>Enquire Now</span>
+        </Button>
+        <Button cssClass='text-black bg-white border-gray-300  rounded-lg flex items-center justify-center border '>
+          <Image src={phoneIcon} alt='Email Icon' width={20} height={20} />
+          <span className='ml-2'>Call us</span>
+        </Button>
+      </div>
+    );
+  };
+  const renderSocialMediaLinks = () => {
+    return (
+      <div className='flex items-center gap-4 mt-4 sm:mt-2'>
+        <a href='#' className='text-xl rounded-full bg-white w-8 h-8 flex justify-center items-center'>
+          <Image
+            src='https://resi.uatz.view.com.au/viewstatic/lancer/_next/static/media/Facebook - Original.fdf42c22.svg'
+            alt='Facebook Page'
+            width={16}
+            height={16}
+          />
+        </a>
+        <a href='#' className='text-xl rounded-full bg-white w-8 h-8 flex justify-center items-center'>
+          <Image
+            src='https://resi.uatz.view.com.au/viewstatic/lancer/_next/static/media/Twitter - Original.1663187e.svg'
+            alt='Twitter Page'
+            width={16}
+            height={16}
+          />
+        </a>
+        <a href='#' className='text-xl rounded-full bg-white w-8 h-8 flex justify-center items-center'>
+          <Image
+            src='https://resi.uatz.view.com.au/viewstatic/lancer/_next/static/media/mail-01.90592f30.svg'
+            alt='Email Link'
+            width={16}
+            height={16}
+          />
+        </a>
+      </div>
+    );
+  };
   const renderHeroContainer = () => {
     return (
       <HeroContainer title={developmentDetail.title} subTitle={developmentLocation} cssClassName='xmd:w-8/12 '>
         <div className='flex flex-col mt-8 xmd:flex-row justify-start xmd:justify-between xmd:items-center'>
-          <div className='flex gap-4'>
-            <Button cssClass='text-white bg-blue-600 hover:bg-blue-700 rounded-lg flex items-center justify-center'>
-              <Image src={EmailIcon} alt='Email Icon' width={20} height={20} />
-              <span className='ml-2'>Enquire Now</span>
-            </Button>
-            <Button cssClass='text-black bg-white border-gray-300  rounded-lg flex items-center justify-center border '>
-              <Image src={phoneIcon} alt='Email Icon' width={20} height={20} />
-              <span className='ml-2'>Call us</span>
-            </Button>
-          </div>
-          <div className='flex items-center gap-4 mt-4 sm:mt-2'>
-            <a href='#' className='text-xl rounded-full bg-white w-8 h-8 flex justify-center items-center'>
-              <Image
-                src='https://resi.uatz.view.com.au/viewstatic/lancer/_next/static/media/Facebook - Original.fdf42c22.svg'
-                alt='Facebook Page'
-                width={16}
-                height={16}
-              />
-            </a>
-            <a href='#' className='text-xl rounded-full bg-white w-8 h-8 flex justify-center items-center'>
-              <Image
-                src='https://resi.uatz.view.com.au/viewstatic/lancer/_next/static/media/Twitter - Original.1663187e.svg'
-                alt='Twitter Page'
-                width={16}
-                height={16}
-              />
-            </a>
-            <a href='#' className='text-xl rounded-full bg-white w-8 h-8 flex justify-center items-center'>
-              <Image
-                src='https://resi.uatz.view.com.au/viewstatic/lancer/_next/static/media/mail-01.90592f30.svg'
-                alt='Email Link'
-                width={16}
-                height={16}
-              />
-            </a>
-          </div>
+          {renderContactButtons()}
+          {renderSocialMediaLinks()}
         </div>
       </HeroContainer>
     );
@@ -177,7 +187,7 @@ const DevlopmentDetails = ({ developmentDetail }: IProps) => {
   };
   return (
     <Layout>
-      <main className='max-w-1200 mx-auto px-8'>
+      <main className='max-w-1200 mx-auto max-xmd:px-8'>
         <section className='flex gap-4 flex-col xmd:flex-row  '>
           {renderHeroContainer()}
           {renderPropertyImage()}

@@ -7,6 +7,14 @@ const Accordian = ({ title, subTitle, subTitleCSS, titleCSS }: IAccordian): JSX.
   const onShowHideButton = () => {
     setIsShowSubTitle(!isShowSubTitle);
   };
+  const renderTitle=()=>{
+    return (
+      <div onClick={onShowHideButton} className=' w-full flex items-center justify-between cursor-pointer'>
+        <p className='text-base font-semibold pr-2'>{title}</p>
+        <span className='font-semibold text-2xl'>{isShowSubTitle ? '-' : '+'}</span>
+      </div>
+    );
+  }
   const renderSubTitle = () => {
     return (
       <div
@@ -19,10 +27,7 @@ const Accordian = ({ title, subTitle, subTitleCSS, titleCSS }: IAccordian): JSX.
   };
   return (
     <div className={titleCSS}>
-      <div onClick={onShowHideButton} className=' w-full flex items-center justify-between cursor-pointer'>
-        <p className='text-base font-semibold pr-2'>{title}</p>
-        <span className='font-semibold text-2xl'>{isShowSubTitle ? '-' : '+'}</span>
-      </div>
+      {renderTitle()}
       {renderSubTitle()}
     </div>
   );

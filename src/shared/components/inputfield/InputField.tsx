@@ -8,7 +8,16 @@ interface IProops extends React.ComponentProps<'input'> {
   rule: RegisterOptions;
   error: string | undefined;
 }
+
 const InputField = ({ error, rule, cssclass, name, label, register, ...proops }: IProops): JSX.Element => {
+  const renerLabel = () => {
+    return (
+      <label className='ml-1 text-sm'>
+        {label}
+        <span className='text-red-500'>*</span>
+      </label>
+    );
+  };
   const renderInput = () => {
     return (
       <input
@@ -19,12 +28,10 @@ const InputField = ({ error, rule, cssclass, name, label, register, ...proops }:
       />
     );
   };
+
   return (
     <div className={cssclass}>
-      <label className='ml-1 text-sm'>
-        {label}
-        <span className='text-red-500'>*</span>
-      </label>
+      {renerLabel()}
       {renderInput()}
       {error && <p className='text-red-500 text-xs'>{error}</p>}
     </div>
