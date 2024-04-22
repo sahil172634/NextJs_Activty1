@@ -33,7 +33,6 @@ const Index = (): JSX.Element => {
       ></iframe>
     );
   };
-
   const renderVideoDescriptionText = () => {
     return (
       <div className='mb-8 xmd:mb-16 mt-3'>
@@ -80,15 +79,20 @@ const Index = (): JSX.Element => {
       </>
     );
   };
+  const renderYTVideoWithDescription = () => {
+    return (
+      <div className='xmd:w-58%'>
+        {renderIframYtVideo()}
+        {renderVideoDescriptionText()}
+      </div>
+    );
+  };
   return (
     <Layout>
       <main className='max-w-1200 mx-auto'>
         <section className='py-6 max-xmd:px-4'>{renderHeroContainer()}</section>
         <section className='pb-6 max-xmd:px-4 relative'>
-          <div className='xmd:w-58%'>
-            {renderIframYtVideo()}
-            {renderVideoDescriptionText()}
-          </div>
+          {renderYTVideoWithDescription()}
           <RedeemOfferForm />
         </section>
         <section className='xmd:w-58%'>{renderFAQSection()}</section>

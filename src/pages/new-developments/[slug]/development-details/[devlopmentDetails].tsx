@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { getDevelopmentDetails } from '@/src/module/development-details/API/devlopmentDeatils.api';
+import { getDevelopmentDetails } from '@/src/module/development-details/API/devlopment-deatils.api';
 import HouseBHKInfo from '@/src/module/development-details/component/HouseBHKInfo';
 import PropertyDescription from '@/src/module/development-details/component/PropertyDescription';
 import HeroContainer from '@/src/shared/components/HeroContainer/HeroContainer';

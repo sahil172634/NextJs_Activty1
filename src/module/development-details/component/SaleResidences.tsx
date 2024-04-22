@@ -6,8 +6,8 @@ interface IProps {
   property: IProperties;
 }
 const SaleResidences = ({ property }: IProps) => {
-  return (
-    <div className='flex border p-4 rounded-lg shadow mb-4'>
+  const renderPropertyImage = () => {
+    return (
       <Image
         src={property.files.thumbnail[0].url}
         alt='Property Image'
@@ -15,6 +15,10 @@ const SaleResidences = ({ property }: IProps) => {
         height={80}
         className='rounded-lg '
       />
+    );
+  };
+  const renderPropertyInfo = () => {
+    return (
       <div className='w-full ml-4 flex flex-col justify-between '>
         <p className='text-lg font-semibold'>{property.title}</p>
         <p className='text-gray-500 text-base font-normal'>{property.priceDisplay}</p>
@@ -23,6 +27,12 @@ const SaleResidences = ({ property }: IProps) => {
           <p className='text-sm text-gray-500 capitalize pl-2'>{property.discr}</p>
         </div>
       </div>
+    );
+  };
+  return (
+    <div className='flex border p-4 rounded-lg shadow mb-4'>
+      {renderPropertyImage()}
+      {renderPropertyInfo()}
     </div>
   );
 };
