@@ -4,9 +4,9 @@ interface IProops extends React.ComponentProps<'input'> {
   cssclass: string;
   label: string;
   name: string;
-  register: UseFormRegister<FieldValues>;
   rule: RegisterOptions;
   error: string | undefined;
+  register: UseFormRegister<FieldValues>;
 }
 
 const InputField = ({ error, rule, cssclass, name, label, register, ...proops }: IProops): JSX.Element => {
