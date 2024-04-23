@@ -1,32 +1,67 @@
 import Image from 'next/image';
 import { getDevelopmentDetails } from '@/src/module/development-details/API/devlopment-deatils.api';
-import HouseBHKInfo from '@/src/module/development-details/component/HouseBHKInfo';
-import PropertyDescription from '@/src/module/development-details/component/PropertyDescription';
+import { IDevelopmentDetails } from '@/src/module/development-details/development-details.interface';
+import AboutProperty from '@/src/module/development-details/component/AboutProperty';
 import HeroContainer from '@/src/shared/components/HeroContainer/HeroContainer';
 import Layout from '@/src/shared/components/layout/Layout';
-import SaleResidences from '@/src/module/development-details/component/SaleResidences';
+import PropertyContainer from '@/src/module/development-details/component/PropertyContainer';
 import EmailIcon from '@/public/media/emailIcon.svg';
 import phoneIcon from '@/public/media/phoneIcon.svg';
-import mapIcon from '@/public/media/mapLocationIcon.svg';
-import { IDevelopmentDetails } from '@/src/module/development-details/development-details.interface';
 import ArrowAccordian from '@/src/shared/components/accordian/arrowAccordian';
 import Button from '@/src/shared/components/Button/Button';
-
+import { GetServerSideProps, GetServerSidePropsContext } from 'next';
+export const getServerSideProps: GetServerSideProps = async (context: GetServerSidePropsContext) => {
+  const slug = context.params?.slug;
+  const devlopmentDetails = context.params?.devlopmentDetails;
+  let resData;
+  try {
+    resData = await getDevelopmentDetails();
+  } catch {
+    return {
+      props: {
+        error: 'Failed to load data',
+      },
+    };
+  }
+  const developmentDetail = resData.props.pageProps.data.developmentDetail;
+  const validSlug = resData.props.pageProps.data.slug;
+  const validDevelopmentDetailsSlug = developmentDetail.slug.name;
+  const validURL = `new-developments/${validSlug}/development-details/${validDevelopmentDetailsSlug}`;
+  const currentURL = `new-developments/${slug}/development-details/${devlopmentDetails}`;
+  if (currentURL !== validURL) {
+    return {
+      redirect: {
+        destination: '/conveyancing',
+        permanent: false,
+      },
+    };
+  }
+  return {
+    props: {
+      developmentDetail,
+    },
+  };
+};
 interface IProps {
   developmentDetail: IDevelopmentDetails;
+  error?: string;
 }
-
-const DevlopmentDetails = ({ developmentDetail }: IProps) => {
-  const developmentLocation = `${developmentDetail.address.thoroughfareNumber} ${developmentDetail.address.thoroughfare}, ${developmentDetail.address.area}, ${developmentDetail.address.state} ${developmentDetail.address.postalCode} `;
+const DevlopmentDetails = (props: IProps) => {
+  if (props.error) {
+    return <HeroContainer title={props.error} />;
+  }
+  const { developmentDetail } = props;
   const displayLocation = `${developmentDetail.displaySuite.address.thoroughfareNumber} ${developmentDetail.address.thoroughfare}, ${developmentDetail.address.area}, ${developmentDetail.address.shortenState} ${developmentDetail.address.postalCode}`;
+  const developmentLocation = `${developmentDetail.address.thoroughfareNumber} ${developmentDetail.address.thoroughfare}, ${developmentDetail.address.area}, ${developmentDetail.address.state} ${developmentDetail.address.postalCode} `;
+
   const renderContactButtons = () => {
     return (
       <div className='flex gap-4'>
-        <Button cssClass='text-white bg-blue-600 hover:bg-blue-700 rounded-lg flex items-center justify-center'>
+        <Button className='text-white bg-blue-600 hover:bg-blue-700 rounded-lg flex items-center justify-center'>
           <Image src={EmailIcon} alt='Email Icon' width={20} height={20} />
           <span className='ml-2'>Enquire Now</span>
         </Button>
-        <Button cssClass='text-black bg-white border-gray-300  rounded-lg flex items-center justify-center border '>
+        <Button className='text-black bg-white border-gray-300  rounded-lg flex items-center justify-center border '>
           <Image src={phoneIcon} alt='Email Icon' width={20} height={20} />
           <span className='ml-2'>Call us</span>
         </Button>
@@ -65,56 +100,12 @@ const DevlopmentDetails = ({ developmentDetail }: IProps) => {
   };
   const renderHeroContainer = () => {
     return (
-      <HeroContainer title={developmentDetail.title} subTitle={developmentLocation} cssClassName='xmd:w-8/12 '>
+      <HeroContainer title={developmentDetail.title} subTitle={developmentLocation} ClassName='xmd:w-8/12 '>
         <div className='flex flex-col mt-8 xmd:flex-row justify-start xmd:justify-between xmd:items-center'>
           {renderContactButtons()}
           {renderSocialMediaLinks()}
         </div>
       </HeroContainer>
-    );
-  };
-  const renderPropertyInfo = () => {
-    return (
-      <div>
-        <p className='text-base font-medium'>About {developmentDetail.title}</p>
-        <h2 className='text-lg font-medium mt-4 mb-2 xmd:text-2xl'>{developmentLocation}</h2>
-        <p className='text-base font-normal mb-2 text-gray-500'>From ${developmentDetail.priceSearch}</p>
-        <div className='flex gap-1 mb-2 xmd:mb-4'>
-          <HouseBHKInfo
-            bedrooms={developmentDetail.bedrooms}
-            bathroom={developmentDetail.bathrooms}
-            parking={developmentDetail.carSpaces}
-          />
-        </div>
-        <div className='xmd:flex border-b border-gray-300 pb-8'>
-          <div className='mb-2 xmd:pr-6 xmd:border-r xmd:border-gray-300'>
-            <div className='flex gap-2 items-center mb-1'>
-              <Image src={mapIcon} alt='map Icon' width={16} height={20} />
-              <span className='text-sm font-normal '>Display Location</span>
-            </div>
-            <p className='text-base font-normal '>{displayLocation}</p>
-          </div>
-          <div className='mb-2 xmd:pl-6 xmd:pr-6 xmd:border-r xmd:border-gray-300'>
-            <div className='flex gap-2 items-center mb-1'>
-              <Image src={mapIcon} alt='map Icon' width={16} height={20} />
-              <span className='text-sm font-normal '>Property Type</span>
-            </div>
-            <p className='text-base font-normal '>{developmentDetail.classification}</p>
-          </div>
-          <div className='xmd:pl-6'>
-            <div className='flex gap-2 items-center mb-1'>
-              <Image
-                src='https://resi.uatz.view.com.au/viewstatic/lancer/_next/static/media/new-dev-home.a180cb61.svg'
-                width={14}
-                height={15}
-                alt='Home Icon'
-              />
-              <span className='text-sm font-normal '>size</span>
-            </div>
-            <p className='text-base font-normal '>{developmentDetail.totalProperties}</p>
-          </div>
-        </div>
-      </div>
     );
   };
   const renderSaleResidences = () => {
@@ -123,7 +114,7 @@ const DevlopmentDetails = ({ developmentDetail }: IProps) => {
         <h2 className='text-lg font-bold mb-4'>Off-The-Plan Residences For Sale At {developmentDetail.title}</h2>
         <div className='border-b border-gray-300 my-8 pb-8 w-full'>
           {developmentDetail.properties.map((property) => (
-            <SaleResidences key={property.title} property={property} />
+            <PropertyContainer key={property.title} property={property} />
           ))}
         </div>
       </>
@@ -146,7 +137,7 @@ const DevlopmentDetails = ({ developmentDetail }: IProps) => {
             <h6 className='text-sm font-bold'>Display Open Hours</h6>
             <p className='text-xs font-normal'>Not available</p>
           </div>
-          <Button cssClass='w-full text-white bg-blue-600 hover:bg-blue-700 rounded-lg text-center'>
+          <Button className='w-full text-white bg-blue-600 hover:bg-blue-700 rounded-lg text-center'>
             Request a private appointment
           </Button>
         </div>
@@ -160,15 +151,13 @@ const DevlopmentDetails = ({ developmentDetail }: IProps) => {
         <div className='flex flex-col gap-4 mt-4'>
           <ArrowAccordian
             title='Meet the Neighbours near Surrey hills'
-            subTitle='Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius id perspiciatis, consequatur architecto modi necessitatibus sed numquam dolore ratione, nulla voluptates reprehenderit delectus et ducimus! Vel tempora sequi ex non.'
-            titleCSS=' shadow rounded-lg p-4 border'
-            subTitleCSS='mt-1'
+            subTitle='Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius id perspiciatis, consequatur architecto modi necessitatibus sed numquam dolore ratione, nulla voluptates'
+            className='shadow rounded-lg p-4 border'
           />
           <ArrowAccordian
             title='Surrey hills Suburb Trends'
-            subTitle='Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius id perspiciatis, consequatur architecto modi necessitatibus sed numquam dolore ratione, nulla voluptates reprehenderit delectus et ducimus! Vel tempora sequi ex non.'
-            titleCSS=' shadow rounded-lg p-4 border '
-            subTitleCSS='mt-1'
+            subTitle='Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius id perspiciatis, consequatur architecto modi necessitatibus sed numquam dolore ratione, nulla voluptates.'
+            className='shadow rounded-lg p-4 border '
           />
         </div>
       </>
@@ -193,8 +182,11 @@ const DevlopmentDetails = ({ developmentDetail }: IProps) => {
           {renderPropertyImage()}
         </section>
         <section className='w-full xmd:w-8/12 pb-8 border-b border-gray-300'>
-          {renderPropertyInfo()}
-          <PropertyDescription description={developmentDetail.description.textProfile} />
+          <AboutProperty
+            developmentDetail={developmentDetail}
+            developmentLocation={developmentLocation}
+            displayLocation={displayLocation}
+          />
         </section>
         <section className='w-full xmd:w-8/12 pt-8 pb-2'>{renderSaleResidences()}</section>
         <section className='w-full xmd:w-8/12'>{renderLocationInfo()}</section>
@@ -205,26 +197,3 @@ const DevlopmentDetails = ({ developmentDetail }: IProps) => {
 };
 
 export default DevlopmentDetails;
-
-export const getServerSideProps = async (context: { params: { devlopmentDetails: string; slug: string } }) => {
-  const resData = await getDevelopmentDetails();
-  const developmentDetail = resData.props.pageProps.data.developmentDetail;
-  const { params } = context;
-  const { slug, devlopmentDetails } = params;
-  const validSlug = resData.props.pageProps.data.slug;
-  const validDevelopmentDetailsSlug = developmentDetail.slug.name;
-  const validURL = `new-developments/${validSlug}/development-details/${validDevelopmentDetailsSlug}`;
-  const currentURL = `new-developments/${slug}/development-details/${devlopmentDetails}`;
-  if (currentURL !== validURL) {
-    return {
-      redirect: {
-        destination: '/conveyancing',
-      },
-    };
-  }
-  return {
-    props: {
-      developmentDetail,
-    },
-  };
-};

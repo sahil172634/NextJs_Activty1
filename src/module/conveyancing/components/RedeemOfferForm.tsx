@@ -5,6 +5,7 @@ import emailIcon from '@/public/media/emailIcon.svg';
 import React from 'react';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { OPTIONS } from '../conveyancing.constant';
+import Button from '@/src/shared/components/Button/Button';
 
 const RedeemOfferForm = () => {
   const {
@@ -19,7 +20,7 @@ const RedeemOfferForm = () => {
     return (
       <>
         <InputField
-          cssclass='mb-4'
+          className='mb-4'
           label='First name'
           name='firstName'
           type='text'
@@ -30,7 +31,7 @@ const RedeemOfferForm = () => {
           }}
         />
         <InputField
-          cssclass='mb-4'
+          className='mb-4'
           label='Last name'
           name='lastName'
           type='text'
@@ -41,7 +42,7 @@ const RedeemOfferForm = () => {
           }}
         />
         <InputField
-          cssclass='mb-4'
+          className='mb-4'
           label='Email'
           type='text'
           name='email'
@@ -56,7 +57,7 @@ const RedeemOfferForm = () => {
           }}
         />
         <InputField
-          cssclass='mb-4'
+          className='mb-4'
           label='Phone'
           register={register}
           name='phoneNumber'
@@ -80,6 +81,7 @@ const RedeemOfferForm = () => {
   const renderSelectInputFields = () => {
     return (
       <SelectInputField
+        className='mb-4'
         label='State'
         name='state'
         register={register}
@@ -99,10 +101,10 @@ const RedeemOfferForm = () => {
   };
   const renderSubmitButton = () => {
     return (
-      <button className=' px-4 py-2 font-bold text-white bg-at-blue-500 w-full rounded-lg flex items-center justify-center'>
+      <Button className=' px-4 py-2 font-bold text-white bg-at-blue-500 w-full rounded-lg flex items-center justify-center'>
         <Image src={emailIcon} alt='Email Icon' width={20} height={20} />
         <span className='text-base font-bold pl-2'>Redeem Offer</span>
-      </button>
+      </Button>
     );
   };
   const renderPrivacyPolociyParagraph = () => {

@@ -11,7 +11,7 @@ const Index = (): JSX.Element => {
       <HeroContainer
         title='Buying or selling?'
         subTitle='Redeem your $220 conveyancing voucher and free contract review'
-        cssClassName='relative pt-24'
+        ClassName='relative pt-24'
       >
         <a href='#' className='absolute top-6 md:top-12 md:right-14 w-14 h-14 md:w-24 md:h-24 xmd:w-32 xmd:h-32 '>
           <Image
@@ -37,11 +37,7 @@ const Index = (): JSX.Element => {
     return (
       <div className='mb-8 xmd:mb-16 mt-3'>
         {DESCRIPTIONS.map((description) => (
-          <div
-            key={description}
-            className='[&_p]:mb-4 [&_a]:underline [&_a]:cursor-pointer'
-            dangerouslySetInnerHTML={{ __html: description }}
-          />
+          <div key={description} className='[&_p]:mb-4' dangerouslySetInnerHTML={{ __html: description }} />
         ))}
       </div>
     );
@@ -51,14 +47,12 @@ const Index = (): JSX.Element => {
       <div>
         <h2 className='text-base font-bold mb-4 xmd:mb-6'>Frequently Asked Questions</h2>
         {FAQs.map((faq, index) => {
-          let css = index !== FAQs.length - 1 ? 'border-b pt-4' : 'pt-4';
           return (
             <Accordian
               key={faq.title}
               title={faq.title}
               subTitle={faq.subTitle}
-              titleCSS={css}
-              subTitleCSS='mt-4 [&_p]:mb-4 [&_ul]:pl-7 [&_ul]:mb-4 [&_ul]:list-disc'
+              className={index !== FAQs.length - 1 ? 'border-b pt-4' : 'pt-4'}
             />
           );
         })}
@@ -79,7 +73,7 @@ const Index = (): JSX.Element => {
       </>
     );
   };
-  const renderYTVideoWithDescription = () => {
+  const renderYtVideoWithDescription = () => {
     return (
       <div className='xmd:w-58%'>
         {renderIframYtVideo()}
@@ -92,7 +86,7 @@ const Index = (): JSX.Element => {
       <main className='max-w-1200 mx-auto'>
         <section className='py-6 max-xmd:px-4'>{renderHeroContainer()}</section>
         <section className='pb-6 max-xmd:px-4 relative'>
-          {renderYTVideoWithDescription()}
+          {renderYtVideoWithDescription()}
           <RedeemOfferForm />
         </section>
         <section className='xmd:w-58%'>{renderFAQSection()}</section>

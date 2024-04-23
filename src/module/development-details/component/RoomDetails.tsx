@@ -44,7 +44,7 @@ const renderParkingInfo = (parking: string) => {
     </div>
   );
 };
-const HouseBHKInfo = ({ bedrooms, parking, bathroom }: IProps) => {
+const RoomDetails = ({ bedrooms, parking, bathroom }: IProps) => {
   return (
     <div className='flex gap-1 '>
       {renderBedroomInfo(bedrooms)}
@@ -54,4 +54,4 @@ const HouseBHKInfo = ({ bedrooms, parking, bathroom }: IProps) => {
   );
 };
 
-export default HouseBHKInfo;
+export default RoomDetails;

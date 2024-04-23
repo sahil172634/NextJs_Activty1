@@ -3,7 +3,7 @@ import { useRef, useState } from 'react';
 import arrow from '@/public/media/blackArrow.svg';
 import { IAccordian } from './accordian.interface';
 
-const ArrowAccordian = ({ title, subTitle, subTitleCSS, titleCSS }: IAccordian): JSX.Element => {
+const ArrowAccordian = ({ title, subTitle, className }: IAccordian): JSX.Element => {
   const [isShowSubTitle, setIsShowSubTitle] = useState<boolean>(false);
   const subTitleRef = useRef<HTMLDivElement>(null);
   const onShowHideButton = () => {
@@ -25,12 +25,12 @@ const ArrowAccordian = ({ title, subTitle, subTitleCSS, titleCSS }: IAccordian):
         ref={subTitleRef}
         style={isShowSubTitle ? { height: subTitleRef.current?.scrollHeight } : { height: '0px' }}
         dangerouslySetInnerHTML={{ __html: subTitle }}
-        className={`overflow-hidden transition-all duration-500  ${subTitleCSS}`}
+        className='overflow-hidden transition-all duration-500 mt-1'
       />
     );
   };
   return (
-    <div className={titleCSS}>
+    <div className={className}>
       {renderTitle()}
       {renderSubTitle()}
     </div>

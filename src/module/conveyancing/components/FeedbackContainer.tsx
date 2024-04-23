@@ -33,7 +33,7 @@ const FeedbackContainer = ({ feedback }: IProop) => {
         <p
           ref={descriptionRef}
           style={isShowMore ? { height: descriptionRef.current?.scrollHeight } : { height: '75px' }}
-          className={`overflow-hidden transition-all duration-500 `}
+          className='overflow-hidden transition-all duration-500 '
         >
           {feedback.description}
         </p>
@@ -45,7 +45,7 @@ const FeedbackContainer = ({ feedback }: IProop) => {
     <div className='bg-white border shadow-sm rounded-xl h-fit p-4 '>
       {renderTopRaitingStar()}
       {renderFeedbackText()}
-      <p className='text-sm font-bold mt-4'>{feedback.userName}</p>
+      <p className='text-sm font-bold mt-4'>{feedback.reviewerName}</p>
     </div>
   );
 };

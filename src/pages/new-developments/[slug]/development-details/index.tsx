@@ -1,3 +1,4 @@
+import { GetServerSideProps } from 'next';
 import React from 'react';
 
 const index = () => {
@@ -5,10 +6,11 @@ const index = () => {
 };
 
 export default index;
-export const getServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   return {
     redirect: {
       destination: '/conveyancing',
+      permanent: false,
     },
   };
 };

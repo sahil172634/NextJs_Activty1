@@ -1,11 +1,11 @@
 import Image from 'next/image';
 import React from 'react';
-import HouseBHKInfo from '@/src/module/development-details/component/HouseBHKInfo';
+import RoomDetails from '@/src/module/development-details/component/RoomDetails';
 import { IProperties } from '../development-details.interface';
 interface IProps {
   property: IProperties;
 }
-const SaleResidences = ({ property }: IProps) => {
+const PropertyContainer = ({ property }: IProps) => {
   const renderPropertyImage = () => {
     return (
       <Image
@@ -22,8 +22,8 @@ const SaleResidences = ({ property }: IProps) => {
       <div className='w-full ml-4 flex flex-col justify-between '>
         <p className='text-lg font-semibold'>{property.title}</p>
         <p className='text-gray-500 text-base font-normal'>{property.priceDisplay}</p>
-        <div className='w-full flex flex-wrap '>
-          <HouseBHKInfo bedrooms={property.bedrooms} bathroom={property.bathrooms} parking={property.carSpaces} />
+        <div className='w-full flex flex-wrap'>
+          <RoomDetails bedrooms={property.bedrooms} bathroom={property.bathrooms} parking={property.carSpaces} />
           <p className='text-sm text-gray-500 capitalize pl-2'>{property.discr}</p>
         </div>
       </div>
@@ -37,4 +37,4 @@ const SaleResidences = ({ property }: IProps) => {
   );
 };
 
-export default SaleResidences;
+export default PropertyContainer;

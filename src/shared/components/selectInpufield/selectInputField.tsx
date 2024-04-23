@@ -1,6 +1,7 @@
 import React from 'react';
 import { FieldValues, RegisterOptions, UseFormRegister } from 'react-hook-form';
 interface IProops extends React.ComponentProps<'select'> {
+  className?: string;
   label: string;
   name: string;
   options: string[];
@@ -8,7 +9,16 @@ interface IProops extends React.ComponentProps<'select'> {
   rule?: RegisterOptions;
   error: string | undefined;
 }
-const SelectInputField = ({ label, name, options, register, error, rule, ...props }: IProops): JSX.Element => {
+const SelectInputField = ({
+  label,
+  name,
+  className,
+  options,
+  register,
+  error,
+  rule,
+  ...props
+}: IProops): JSX.Element => {
   const renderLabel = () => {
     return (
       <label className='font-medium text-sm'>
@@ -19,7 +29,11 @@ const SelectInputField = ({ label, name, options, register, error, rule, ...prop
   };
   const renderSelectWithOptions = () => {
     return (
-      <select className='p-2 border rounded-lg border-gray-200 w-full' {...props} {...register!(name, rule)}>
+      <select
+        className={`p-2 border rounded-lg border-gray-200 w-full ${className}`}
+        {...props}
+        {...register(name, rule)}
+      >
         {options.map((option, index) => (
           <option
             disabled={index === 0 ? true : false}

@@ -14,7 +14,7 @@ const index = (): JSX.Element => {
       <HeroContainer
         title={heroTitle}
         subTitle={heroSubTitle}
-        cssClassName='bg-at-blue-50 w-full rounded-xl p-6 xmd:px-16 xmd:py-12 mb-16'
+        ClassName='bg-at-blue-50 w-full rounded-xl p-6 xmd:px-16 xmd:py-12 mb-16'
       >
         <MediaButtons cssClass='flex gap-4 mt-6 xmd:mt-12' />
       </HeroContainer>

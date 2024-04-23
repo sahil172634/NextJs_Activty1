@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import { IAccordian } from './accordian.interface';
 
-const Accordian = ({ title, subTitle, subTitleCSS, titleCSS }: IAccordian): JSX.Element => {
+const Accordian = ({ title, subTitle, className }: IAccordian): JSX.Element => {
   const [isShowSubTitle, setIsShowSubTitle] = useState<boolean>(false);
   const subTitleRef = useRef<HTMLDivElement>(null);
   const fullHight = subTitleRef.current?.scrollHeight;
@@ -24,12 +24,12 @@ const Accordian = ({ title, subTitle, subTitleCSS, titleCSS }: IAccordian): JSX.
         ref={subTitleRef}
         style={{ height: subTitleHight }}
         dangerouslySetInnerHTML={{ __html: subTitle }}
-        className={`overflow-hidden transition-all duration-500  ${subTitleCSS}`}
+        className='overflow-hidden transition-all duration-500 mt-4'
       />
     );
   };
   return (
-    <div className={titleCSS}>
+    <div className={className}>
       {renderTitle()}
       {renderSubTitle()}
     </div>
