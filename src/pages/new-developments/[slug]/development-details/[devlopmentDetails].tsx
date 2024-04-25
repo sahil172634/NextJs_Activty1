@@ -1,21 +1,40 @@
 import Image from 'next/image';
-import { getDevelopmentDetails } from '@/src/module/development-details/API/devlopment-deatils.api';
 import { IDevelopmentDetails } from '@/src/module/development-details/development-details.interface';
 import AboutProperty from '@/src/module/development-details/component/AboutProperty';
 import HeroContainer from '@/src/shared/components/HeroContainer/HeroContainer';
 import Layout from '@/src/shared/components/layout/Layout';
-import PropertyContainer from '@/src/module/development-details/component/PropertyContainer';
+import PropertyCard from '@/src/module/development-details/component/PropertyCard';
 import EmailIcon from '@/public/media/emailIcon.svg';
 import phoneIcon from '@/public/media/phoneIcon.svg';
 import ArrowAccordian from '@/src/shared/components/accordian/arrowAccordian';
 import Button from '@/src/shared/components/Button/Button';
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
+import Head from 'next/head';
+
 export const getServerSideProps: GetServerSideProps = async (context: GetServerSidePropsContext) => {
   const slug = context.params?.slug;
   const devlopmentDetails = context.params?.devlopmentDetails;
-  let resData;
   try {
-    resData = await getDevelopmentDetails();
+    const response = await fetch('https://run.mocky.io/v3/32bc605c-45b7-49f9-8a1a-ee8aa84d2289');
+    const resData = await response.json();
+    const developmentDetail = resData.props.pageProps.data.developmentDetail;
+    const validSlug = resData.props.pageProps.data.slug;
+    const validDevelopmentDetailsSlug = developmentDetail.slug.name;
+    const validURL = `new-developments/${validSlug}/development-details/${validDevelopmentDetailsSlug}`;
+    const currentURL = `new-developments/${slug}/development-details/${devlopmentDetails}`;
+    if (currentURL !== validURL) {
+      return {
+        redirect: {
+          destination: '/conveyancing',
+          permanent: false,
+        },
+      };
+    }
+    return {
+      props: {
+        developmentDetail,
+      },
+    };
   } catch {
     return {
       props: {
@@ -23,37 +42,81 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
       },
     };
   }
-  const developmentDetail = resData.props.pageProps.data.developmentDetail;
-  const validSlug = resData.props.pageProps.data.slug;
-  const validDevelopmentDetailsSlug = developmentDetail.slug.name;
-  const validURL = `new-developments/${validSlug}/development-details/${validDevelopmentDetailsSlug}`;
-  const currentURL = `new-developments/${slug}/development-details/${devlopmentDetails}`;
-  if (currentURL !== validURL) {
-    return {
-      redirect: {
-        destination: '/conveyancing',
-        permanent: false,
-      },
-    };
-  }
-  return {
-    props: {
-      developmentDetail,
-    },
-  };
 };
+
 interface IProps {
   developmentDetail: IDevelopmentDetails;
   error?: string;
 }
+
 const DevlopmentDetails = (props: IProps) => {
   if (props.error) {
     return <HeroContainer title={props.error} />;
   }
+
   const { developmentDetail } = props;
   const displayLocation = `${developmentDetail.displaySuite.address.thoroughfareNumber} ${developmentDetail.address.thoroughfare}, ${developmentDetail.address.area}, ${developmentDetail.address.shortenState} ${developmentDetail.address.postalCode}`;
-  const developmentLocation = `${developmentDetail.address.thoroughfareNumber} ${developmentDetail.address.thoroughfare}, ${developmentDetail.address.area}, ${developmentDetail.address.state} ${developmentDetail.address.postalCode} `;
+  const developmentLocation = `${developmentDetail.address.thoroughfareNumber} ${developmentDetail.address.thoroughfare}, ${developmentDetail.address.area}, ${developmentDetail.address.state} ${developmentDetail.address.postalCode}`;
+  const content = `${developmentDetail.address.thoroughfareNumber}, ${developmentDetail.address.thoroughfare}, ${developmentDetail.address.area} | Apartments for Sale | ${developmentDetail.address.state} - resi.uatz.view.com.au`;
+  const pageDescription = `${developmentDetail.title} is located on ${developmentLocation}. Pricing and available for this New Development by ${developmentDetail.title}. Visit the site for more details!`;
 
+  const ldJsonData = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Organization ',
+        name: 'view.com.au',
+        url: 'https://resi.uatz.view.com.au/',
+        logo: '	https://resi.uatz.view.com.au/viewstatic/lancer/_next/static/media/viewLogo.8f31e2e5.svg',
+      },
+      {
+        '@type': 'Residence',
+        url: 'https://resi.uatz.view.com.au/new-developments/vic-surrey-hills-3127/development-details/arbour-park/',
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: developmentDetail.address.area,
+          streetAddress: `${developmentDetail.address.thoroughfareNumber} ${developmentDetail.address.thoroughfare}`,
+          postalCode: developmentDetail.address.postalCode,
+          addressCountry: {
+            '@type': 'Country',
+            name: developmentDetail.address.country,
+          },
+          areaServed: {
+            '@type': 'AdministrativeArea',
+            name: developmentDetail.address.area,
+          },
+          geo: {
+            '@type': 'GeoCoordinates',
+            latitude: developmentDetail.address.latitude,
+            longitude: developmentDetail.address.longitude,
+          },
+        },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            name: 'WebPage',
+            item: 'https://resi.uatz.view.com.au/new-developments/',
+            position: 1,
+          },
+          {
+            '@type': 'ListItem',
+            name: 'SearchResultsPage',
+            item: 'https://resi.uatz.view.com.au/new-developments/vic-surrey-hills-3127/',
+            position: 2,
+          },
+          {
+            '@type': 'ListItem',
+            name: 'developmentDetailPage',
+            item: 'https://resi.uatz.view.com.au/new-developments/',
+            position: 3,
+          },
+        ],
+      },
+    ],
+  };
   const renderContactButtons = () => {
     return (
       <div className='flex gap-4'>
@@ -113,8 +176,8 @@ const DevlopmentDetails = (props: IProps) => {
       <>
         <h2 className='text-lg font-bold mb-4'>Off-The-Plan Residences For Sale At {developmentDetail.title}</h2>
         <div className='border-b border-gray-300 my-8 pb-8 w-full'>
-          {developmentDetail.properties.map((property) => (
-            <PropertyContainer key={property.title} property={property} />
+          {developmentDetail.properties.map((property, index) => (
+            <PropertyCard key={index} property={property} />
           ))}
         </div>
       </>
@@ -176,6 +239,33 @@ const DevlopmentDetails = (props: IProps) => {
   };
   return (
     <Layout>
+      <Head>
+        <script type='application/ld+json' dangerouslySetInnerHTML={{ __html: JSON.stringify(ldJsonData) }} />
+        <title>{content}</title>
+        <link
+          rel='canonical'
+          href='https://resi.uatz.view.com.au/new-developments/vic-surrey-hills-3127/development-details/arbour-park/'
+        />
+        <meta property='og:title' content={content} />
+        <meta name='twitter:title' content={content} />
+        <meta name='description' content={pageDescription} />
+        <meta property='og:description' content={pageDescription} />
+        <meta name='twitter:description' content={pageDescription} />
+        <meta
+          property='og:street-address'
+          content={`${developmentDetail.address.thoroughfareNumber} ${developmentDetail.address.thoroughfare} ${developmentDetail.address.area}`}
+        />
+        <meta property='og:locality' content={developmentDetail.address.area} />
+        <meta property='og:postal-code' content={developmentDetail.address.postalCode} />
+        <meta property='og:country-name' content={developmentDetail.address.country} />
+        <meta name='twitter:card' content='summary_large_image' />
+        <meta name='twitter:site' content='@ViewComAu' />
+        <meta name='twitter:creator' content='@ViewComAu' />
+        <meta property='og:image' content={developmentDetail.image} />
+        <meta name='twitter:image' content={developmentDetail.image} />
+        <meta name='apple-mobile-web-app-capable' content='yes' />
+        <meta httpEquiv='X-UA-Compatible' content='IE=edge,chrome=1' />
+      </Head>
       <main className='max-w-1200 mx-auto max-xmd:px-8'>
         <section className='flex gap-4 flex-col xmd:flex-row  '>
           {renderHeroContainer()}

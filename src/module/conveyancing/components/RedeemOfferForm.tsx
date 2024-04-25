@@ -13,6 +13,7 @@ const RedeemOfferForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     console.log(data);
   };

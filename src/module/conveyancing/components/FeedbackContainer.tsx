@@ -3,6 +3,7 @@ import { IFeedback } from '../conveyancing.interface';
 import Image from 'next/image';
 import star from '@/public/media/star.svg';
 import ShowMoreBtn from '@/src/shared/components/Button/ShowMoreBtn';
+
 interface IProop {
   feedback: IFeedback;
 }
@@ -13,7 +14,8 @@ const FeedbackContainer = ({ feedback }: IProop) => {
   const onShowMore = () => {
     setIsShowMore(!isShowMore);
   };
-  const renderTopRaitingStar = () => {
+
+  const renderStarWithTimeStamp = () => {
     return (
       <div className='flex justify-between mb-4'>
         <div className='flex gap-1 justify-center items-center'>
@@ -27,6 +29,7 @@ const FeedbackContainer = ({ feedback }: IProop) => {
       </div>
     );
   };
+
   const renderFeedbackText = () => {
     return (
       <div>
@@ -43,7 +46,7 @@ const FeedbackContainer = ({ feedback }: IProop) => {
   };
   return (
     <div className='bg-white border shadow-sm rounded-xl h-fit p-4 '>
-      {renderTopRaitingStar()}
+      {renderStarWithTimeStamp()}
       {renderFeedbackText()}
       <p className='text-sm font-bold mt-4'>{feedback.reviewerName}</p>
     </div>

@@ -5,6 +5,7 @@ import Accordian from '@/src/shared/components/accordian/Accordian';
 import FeedbackContainer from '@/src/module/conveyancing/components/FeedbackContainer';
 import Layout from '@/src/shared/components/layout/Layout';
 import RedeemOfferForm from '@/src/module/conveyancing/components/RedeemOfferForm';
+
 const Index = (): JSX.Element => {
   const renderHeroContainer = () => {
     return (
@@ -49,7 +50,7 @@ const Index = (): JSX.Element => {
         {FAQs.map((faq, index) => {
           return (
             <Accordian
-              key={faq.title}
+              key={index}
               title={faq.title}
               subTitle={faq.subTitle}
               className={index !== FAQs.length - 1 ? 'border-b pt-4' : 'pt-4'}
@@ -66,8 +67,8 @@ const Index = (): JSX.Element => {
           What Settle Easy customers are saying...
         </h3>
         <div className='grid grid-cols-1 xmd:grid-cols-3 gap-4 px-4 xmd:px-10 pb-6 xmd:pb-10'>
-          {FEEDBACKS.map((feedback) => (
-            <FeedbackContainer key={feedback.description} feedback={feedback} />
+          {FEEDBACKS.map((feedback,index) => (
+            <FeedbackContainer key={index} feedback={feedback} />
           ))}
         </div>
       </>

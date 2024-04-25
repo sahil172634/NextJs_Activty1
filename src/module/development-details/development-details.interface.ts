@@ -7,6 +7,7 @@ export interface IDevelopmentDetails {
   bathrooms: string;
   carSpaces: string;
   address: IAddress;
+  image: string;
   properties: IProperties[];
   displaySuite: IDisplaySuite;
   description: IDescription;
@@ -31,6 +32,9 @@ interface IAddress {
   area: string;
   thoroughfare: string;
   thoroughfareNumber: string;
+  country: string;
+  latitude: string;
+  longitude: string;
 }
 interface IDisplaySuite {
   address: {
