@@ -1,16 +1,17 @@
 import { Html, Head, Main, NextScript } from 'next/document';
 
 export default function Document() {
-  return (
-    <Html lang='en'>
-      <Head>
-        <meta property='fb:admins' content='785845464803058' />
+  const renderMeta = () => {
+    return (
+      <>
+        {' '}
         <meta property='og:type' content='website' />
         <meta name='author' content='resi.uatz.view.com.au' />
         <meta name='og:site_name' content='resi.uatz.view.com.au' />
         <meta name='apple-itunes-app' content='app-id=474698182' />
         <meta name='smartbanner:title' content='resi.uatz.view.com.au - Real Estate' />
         <meta name='smartbanner:author' content='resi.uatz.view.com.au' />
+        <meta property='fb:admins' content='785845464803058' />
         <meta name='smartbanner:price' content='FREE' />
         <meta name='smartbanner:price-suffix-apple' content=' - On the App Store' />
         <meta name='smartbanner:price-suffix-google' content=' - In Google Play' />
@@ -28,7 +29,12 @@ export default function Document() {
         <meta name='smartbanner:enabled-platforms' content='android' />
         <meta name='smartbanner:hide-path' content='/' />
         <meta name='smartbanner:hide-ttl' content='1209600' />
-      </Head>
+      </>
+    );
+  };
+  return (
+    <Html lang='en'>
+      <Head>{renderMeta()}</Head>
       <body>
         <Main />
         <NextScript />
