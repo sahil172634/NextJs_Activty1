@@ -8,6 +8,8 @@ export default function Document() {
         <meta property='og:type' content='website' />
         <meta name='author' content='resi.uatz.view.com.au' />
         <meta name='og:site_name' content='resi.uatz.view.com.au' />
+        <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' />
+        <meta name='apple-mobile-web-app-capable' content='yes' />
         <meta name='apple-itunes-app' content='app-id=474698182' />
         <meta name='smartbanner:title' content='resi.uatz.view.com.au - Real Estate' />
         <meta name='smartbanner:author' content='resi.uatz.view.com.au' />
