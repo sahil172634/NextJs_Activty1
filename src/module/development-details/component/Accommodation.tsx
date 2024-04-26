@@ -49,8 +49,8 @@ const Accommodation = ({ bedrooms, parking, bathroom }: IProps) => {
   return (
     <div className='flex gap-1 '>
       {bedrooms && renderBedroomInfo()}
-      {parking && renderBathroomInfo()}
-      {bathroom && renderParkingInfo()}
+      {bathroom && renderBathroomInfo()}
+      {parking && renderParkingInfo()}
     </div>
   );
 };
