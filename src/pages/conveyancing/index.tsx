@@ -67,7 +67,7 @@ const Index = (): JSX.Element => {
           What Settle Easy customers are saying...
         </h3>
         <div className='grid grid-cols-1 xmd:grid-cols-3 gap-4 px-4 xmd:px-10 pb-6 xmd:pb-10'>
-          {FEEDBACKS.map((feedback,index) => (
+          {FEEDBACKS.map((feedback, index) => (
             <FeedbackContainer key={index} feedback={feedback} />
           ))}
         </div>

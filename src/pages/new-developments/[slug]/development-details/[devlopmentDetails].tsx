@@ -9,7 +9,7 @@ import phoneIcon from '@/public/media/phoneIcon.svg';
 import ArrowAccordian from '@/src/shared/components/accordian/arrowAccordian';
 import Button from '@/src/shared/components/Button/Button';
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
-import SEO from '@/src/module/conveyancing/components/SEO';
+import SEO from '@/src/module/development-details/component/SEO';
 
 export const getServerSideProps: GetServerSideProps = async (context: GetServerSidePropsContext) => {
   const slug = context.params?.slug;

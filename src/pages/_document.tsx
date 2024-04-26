@@ -4,7 +4,6 @@ export default function Document() {
   const renderMeta = () => {
     return (
       <>
-        {' '}
         <meta property='og:type' content='website' />
         <meta name='author' content='resi.uatz.view.com.au' />
         <meta name='og:site_name' content='resi.uatz.view.com.au' />

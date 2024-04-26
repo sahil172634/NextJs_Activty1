@@ -1,5 +1,5 @@
 import React from 'react';
-import { IDevelopmentDetails } from '../../development-details/development-details.interface';
+import { IDevelopmentDetails } from '../development-details.interface';
 import Head from 'next/head';
 
 interface IProps {
@@ -10,6 +10,7 @@ interface IProps {
 const SEO = ({ developmentDetail, developmentLocation }: IProps) => {
   const content = `${developmentDetail.address.thoroughfareNumber}, ${developmentDetail.address.thoroughfare}, ${developmentDetail.address.area} | Apartments for Sale | ${developmentDetail.address.state} - resi.uatz.view.com.au`;
   const pageDescription = `${developmentDetail.title} is located on ${developmentLocation}. Pricing and available for this New Development by ${developmentDetail.title}. Visit the site for more details!`;
+
   const ldJsonData = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -67,6 +68,31 @@ const SEO = ({ developmentDetail, developmentLocation }: IProps) => {
       },
     ],
   };
+  const renderMeta = () => {
+    return (
+      <>
+        <meta property='og:title' content={content} />
+        <meta name='twitter:title' content={content} />
+        <meta name='description' content={pageDescription} />
+        <meta property='og:description' content={pageDescription} />
+        <meta name='twitter:description' content={pageDescription} />
+        <meta
+          property='og:street-address'
+          content={`${developmentDetail.address.thoroughfareNumber} ${developmentDetail.address.thoroughfare} ${developmentDetail.address.area}`}
+        />
+        <meta property='og:locality' content={developmentDetail.address.area} />
+        <meta property='og:postal-code' content={developmentDetail.address.postalCode} />
+        <meta property='og:country-name' content={developmentDetail.address.country} />
+        <meta name='twitter:card' content='summary_large_image' />
+        <meta name='twitter:site' content='@ViewComAu' />
+        <meta name='twitter:creator' content='@ViewComAu' />
+        <meta property='og:image' content={developmentDetail.image} />
+        <meta name='twitter:image' content={developmentDetail.image} />
+        <meta name='apple-mobile-web-app-capable' content='yes' />
+        <meta httpEquiv='X-UA-Compatible' content='IE=edge,chrome=1' />
+      </>
+    );
+  };
   return (
     <Head>
       <script type='application/ld+json' dangerouslySetInnerHTML={{ __html: JSON.stringify(ldJsonData) }} />
@@ -75,25 +101,7 @@ const SEO = ({ developmentDetail, developmentLocation }: IProps) => {
         rel='canonical'
         href='https://resi.uatz.view.com.au/new-developments/vic-surrey-hills-3127/development-details/arbour-park/'
       />
-      <meta property='og:title' content={content} />
-      <meta name='twitter:title' content={content} />
-      <meta name='description' content={pageDescription} />
-      <meta property='og:description' content={pageDescription} />
-      <meta name='twitter:description' content={pageDescription} />
-      <meta
-        property='og:street-address'
-        content={`${developmentDetail.address.thoroughfareNumber} ${developmentDetail.address.thoroughfare} ${developmentDetail.address.area}`}
-      />
-      <meta property='og:locality' content={developmentDetail.address.area} />
-      <meta property='og:postal-code' content={developmentDetail.address.postalCode} />
-      <meta property='og:country-name' content={developmentDetail.address.country} />
-      <meta name='twitter:card' content='summary_large_image' />
-      <meta name='twitter:site' content='@ViewComAu' />
-      <meta name='twitter:creator' content='@ViewComAu' />
-      <meta property='og:image' content={developmentDetail.image} />
-      <meta name='twitter:image' content={developmentDetail.image} />
-      <meta name='apple-mobile-web-app-capable' content='yes' />
-      <meta httpEquiv='X-UA-Compatible' content='IE=edge,chrome=1' />
+      {renderMeta()}
     </Head>
   );
 };
