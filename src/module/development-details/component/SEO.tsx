@@ -1,5 +1,5 @@
 import React from 'react';
-import { IDevelopmentDetails, ImetaConst } from '../development-details.interface';
+import { IDevelopmentDetails, ImetaSEO } from '../development-details.interface';
 import Head from 'next/head';
 
 interface IProps {
@@ -70,7 +70,7 @@ const SEO = ({ developmentDetail, developmentLocation }: IProps) => {
       ],
     };
   };
-  const metaData: ImetaConst[] = [
+  const metaData: ImetaSEO[] = [
     { property: 'og:title', content: content },
     { name: 'twitter:title', content: content },
     { name: 'description', content: pageDescription },

@@ -1,7 +1,7 @@
 import { Html, Head, Main, NextScript } from 'next/document';
-import { ImetaConst } from '../module/development-details/development-details.interface';
+import { ImetaSEO } from '../module/development-details/development-details.interface';
 export default function Document() {
-  const metaData: ImetaConst[] = [
+  const metaData: ImetaSEO[] = [
     { property: 'og:type', content: 'website' },
     { name: 'author', content: 'resi.uatz.view.com.au' },
     { name: 'og:site_name', content: 'resi.uatz.view.com.au' },

@@ -44,7 +44,7 @@ interface IDisplaySuite {
 interface IDescription {
   textProfile: string;
 }
-export interface ImetaConst {
+export interface ImetaSEO {
   content: string;
   name?: string;
   property?: string;
