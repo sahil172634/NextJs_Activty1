@@ -44,3 +44,9 @@ interface IDisplaySuite {
 interface IDescription {
   textProfile: string;
 }
+export interface ImetaConst {
+  content: string;
+  name?: string;
+  property?: string;
+  httpEquiv?: string;
+}
