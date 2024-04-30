@@ -100,31 +100,6 @@ const SEO = ({ developmentDetail, developmentLocation }: IProps) => {
       </>
     );
   };
-  // const renderMeta = () => {
-  //   return (
-  //     <>
-  //       <meta property='og:title' content={content} />
-  //       <meta name='twitter:title' content={content} />
-  //       <meta name='description' content={pageDescription} />
-  //       <meta property='og:description' content={pageDescription} />
-  //       <meta name='twitter:description' content={pageDescription} />
-  //       <meta
-  //         property='og:street-address'
-  //         content={`${developmentDetail.address.thoroughfareNumber} ${developmentDetail.address.thoroughfare} ${developmentDetail.address.area}`}
-  //       />
-  //       <meta property='og:locality' content={developmentDetail.address.area} />
-  //       <meta property='og:postal-code' content={developmentDetail.address.postalCode} />
-  //       <meta property='og:country-name' content={developmentDetail.address.country} />
-  //       <meta name='twitter:card' content='summary_large_image' />
-  //       <meta name='twitter:site' content='@ViewComAu' />
-  //       <meta name='twitter:creator' content='@ViewComAu' />
-  //       <meta property='og:image' content={developmentDetail.image} />
-  //       <meta name='twitter:image' content={developmentDetail.image} />
-  //       <meta name='apple-mobile-web-app-capable' content='yes' />
-  //       <meta httpEquiv='X-UA-Compatible' content='IE=edge,chrome=1' />
-  //     </>
-  //   );
-  // };
   return (
     <Head>
       <script type='application/ld+json' dangerouslySetInnerHTML={{ __html: JSON.stringify(renderLdJson()) }} />
