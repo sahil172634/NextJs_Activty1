@@ -9,7 +9,7 @@ import phoneIcon from '@/public/media/phoneIcon.svg';
 import ArrowAccordian from '@/src/shared/components/accordian/arrowAccordian';
 import Button from '@/src/shared/components/Button/Button';
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
-import SEO from '@/src/module/development-details/component/SEO';
+import Seo from '@/src/module/development-details/component/seo/SEO';
 
 export const getServerSideProps: GetServerSideProps = async (context: GetServerSidePropsContext) => {
   const slug = context.params?.slug;
@@ -131,15 +131,15 @@ const DevlopmentDetails = (props: IProps) => {
         <h2 className='text-lg font-semibold'>Location of {developmentDetail.title}</h2>
         <div className='w-full my-4'>
           <div className='mb-4'>
-            <h6 className='text-sm font-bold'>Development Location</h6>
+            <h4 className='text-sm font-bold'>Development Location</h4>
             <p className='text-xs font-normal'>{developmentLocation}</p>
           </div>
           <div className='mb-4'>
-            <h6 className='text-sm font-bold'>Display Location</h6>
+            <h4 className='text-sm font-bold'>Display Location</h4>
             <p className='text-xs font-normal'>{displayLocation}</p>
           </div>
           <div className='mb-4'>
-            <h6 className='text-sm font-bold'>Display Open Hours</h6>
+            <h4 className='text-sm font-bold'>Display Open Hours</h4>
             <p className='text-xs font-normal'>Not available</p>
           </div>
           <Button className='w-full text-white bg-blue-600 hover:bg-blue-700 rounded-lg text-center'>
@@ -181,7 +181,7 @@ const DevlopmentDetails = (props: IProps) => {
   };
   return (
     <Layout>
-      <SEO developmentDetail={developmentDetail} developmentLocation={developmentLocation} />
+      <Seo developmentDetail={developmentDetail} developmentLocation={developmentLocation} />
       <main className='max-w-1200 mx-auto max-xmd:px-8'>
         <section className='flex gap-4 flex-col xmd:flex-row  '>
           {renderHeroContainer()}

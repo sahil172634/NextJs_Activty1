@@ -44,9 +44,3 @@ interface IDisplaySuite {
 interface IDescription {
   textProfile: string;
 }
-export interface ImetaSEO {
-  content: string;
-  name?: string;
-  property?: string;
-  httpEquiv?: string;
-}

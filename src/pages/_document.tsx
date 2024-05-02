@@ -1,5 +1,6 @@
 import { Html, Head, Main, NextScript } from 'next/document';
-import { ImetaSEO } from '../module/development-details/development-details.interface';
+import { ImetaSEO } from '../module/development-details/component/seo/seo.interface';
+
 export default function Document() {
   const metaData: ImetaSEO[] = [
     { property: 'og:type', content: 'website' },

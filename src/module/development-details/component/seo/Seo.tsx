@@ -1,13 +1,14 @@
 import React from 'react';
-import { IDevelopmentDetails, ImetaSEO } from '../development-details.interface';
+import { IDevelopmentDetails } from '../../development-details.interface';
 import Head from 'next/head';
+import { ImetaSEO } from './seo.interface';
 
 interface IProps {
   developmentDetail: IDevelopmentDetails;
   developmentLocation: string;
 }
 
-const SEO = ({ developmentDetail, developmentLocation }: IProps) => {
+const Seo = ({ developmentDetail, developmentLocation }: IProps) => {
   const content = `${developmentDetail.address.thoroughfareNumber}, ${developmentDetail.address.thoroughfare}, ${developmentDetail.address.area} | Apartments for Sale | ${developmentDetail.address.state} - resi.uatz.view.com.au`;
   const pageDescription = `${developmentDetail.title} is located on ${developmentLocation}. Pricing and available for this New Development by ${developmentDetail.title}. Visit the site for more details!`;
 
@@ -113,4 +114,4 @@ const SEO = ({ developmentDetail, developmentLocation }: IProps) => {
   );
 };
 
-export default SEO;
+export default Seo;
